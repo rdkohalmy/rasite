@@ -7,7 +7,7 @@ services:
       - MARIADB_USER=bn_drupal
       - MARIADB_DATABASE=bitnami_drupal
     volumes:
-      - 'mariadb_data:/bitnami/mariadb'
+      - '/home/sysadmin/mariadb:/bitnami/mariadb'
   drupal:
     image: 'docker.io/bitnami/drupal-nginx:9-debian-10'
     ports:
@@ -20,11 +20,6 @@ services:
       - DRUPAL_DATABASE_NAME=bitnami_drupal
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - 'drupal_data:/bitnami/drupal'
+      - '/home/sysadmin/drupal:/bitnami/drupal'
     depends_on:
       - mariadb
-volumes:
-  mariadb_data:
-    driver: local
-  drupal_data:
-    driver: local
